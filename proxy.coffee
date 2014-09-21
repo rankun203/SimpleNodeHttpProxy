@@ -12,8 +12,6 @@ http.createServer (req, res) ->
   console.log "proxy for #{purl}"
   request {uri: purl}, (err, response, body) ->
     res.write body.replace(/http\:\/\//g, 'http://rankun.org:8888/http://')
-      .replace(/\"https:\/\//g, '\"http://rankun.org:8888/https://')
-      .replace(/\"\:\/\//g, '\"http://rankun.org:8888/http://')
-      .replace(/\"\/\//g, '\"http://rankun.org:8888/http://')
+      .replace(/\"[h]?[t]?[t]?[p]?[s]?[:]?\/\//g, '\"http://rankun.org:8888/https://')
     res.end()
 .listen '8888'
